@@ -1,0 +1,65 @@
+{
+  "development": {
+    "username": "root",
+    "password": "12345",
+    "database": "ikala_dev",
+    "host": "mysql",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "charset": "utf8mb4"
+    },
+    "define": {
+      "charset": "utf8mb4",
+      "collate": "utf8mb4_general_ci",
+      "timestamps": false
+    },
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": "12345",
+    "database": "ikala_testing",
+    "host": "mysql",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "charset": "utf8mb4"
+    },
+    "define": {
+      "charset": "utf8mb4",
+      "collate": "utf8mb4_general_ci",
+      "timestamps": false
+    },
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
+  },
+  "production": {
+    "username": "root",
+    "password": "12345",
+    "database": "ikala_prod",
+    "host": "mysql",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "charset": "utf8mb4"
+    },
+    "define": {
+      "charset": "utf8mb4",
+      "collate": "utf8mb4_general_ci",
+      "timestamps": false
+    },
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
+  }
+}
