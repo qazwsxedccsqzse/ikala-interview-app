@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const cors = require('cors');
-const WHITELIST = [/* 'http://localhost:3000' */];
+const WHITELIST = ['http://localhost:8887', 'http://localhost:3002'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (!WHITELIST.length) {
