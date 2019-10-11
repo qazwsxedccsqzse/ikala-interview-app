@@ -3,7 +3,7 @@
     "username": "root",
     "password": "12345",
     "database": "ikala_dev",
-    "host": "mysql",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "dialectOptions": {
       "charset": "utf8mb4"
@@ -43,9 +43,9 @@
   },
   "production": {
     "username": "root",
-    "password": "12345",
+    "password": "zfw9j3A4alJVvTF$",
     "database": "ikala_prod",
-    "host": "mysql",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "dialectOptions": {
       "charset": "utf8mb4"

@@ -6,8 +6,24 @@ const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
+const cors = require('cors');
+const WHITELIST = [/* 'http://localhost:3000' */];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!WHITELIST.length) {
+      callback(null, true);
+    } else if (WHITELIST.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      const error = new Error('Not allowed by CORS');
+      error.status = 403;
+      callback(error);
+    }
+  }
+}
 
 const app = express();
+app.use(cors(corsOptions));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
