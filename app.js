@@ -7,10 +7,10 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const cors = require('cors');
-const WHITELIST = ['http://localhost:8887', 'http://localhost:3002'];
+const WHITELIST = ['http://localhost:8887', 'http://localhost:3002', 'http://localhost:3000'];
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!WHITELIST.length) {
+    if (!WHITELIST.length || !origin) {
       callback(null, true);
     } else if (WHITELIST.indexOf(origin) !== -1) {
       callback(null, true)
@@ -22,8 +22,41 @@ const corsOptions = {
   }
 }
 
+// swagger
+const swaggerUi = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
+
+const swaggerDefinition = {
+  info: {
+    title: 'iKala Interview Swagger API',
+    version: '1.0.0',
+    description: 'iKala app test',
+  },
+  host: 'localhost:3000',
+  basePath: '/api/v1',
+};
+
+// options for the swagger docs
+const options = {
+  // import swaggerDefinitions
+  swaggerDefinition: swaggerDefinition,
+  // path to the API docs
+  apis: ['./routes/*/*.js'],
+};
+
+// initialize swagger-jsdoc
+const swaggerSpec = swaggerJSDoc(options);
+
+
 const app = express();
 app.use(cors(corsOptions));
+
+app.get('/swagger.json', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
