@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const RoleService = require('../../Services/Role/RoleService');
+// const RoleService = require('../../Services/Role/RoleService');
 
 /**
  * @swagger
@@ -24,8 +24,15 @@ const RoleService = require('../../Services/Role/RoleService');
  */
 router.get('/', async (req, res) => {
 	// input validator here
-	let roles = await RoleService.getAllRoles();
-
+	// const roles = await RoleService.getAllRoles();
+	const roles = [{
+		"id": 1, "name": "Admin"
+	  }, {
+		"id": 2, "name": "Moderator"
+	  }, {
+		"id": 3, "name": "Viewer"
+	  }
+	];
 	return res.json(roles);
 });
 
