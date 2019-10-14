@@ -7,14 +7,34 @@
 	<title>Document</title>
 </head>
 <body>
+	<div id="app">
+		<ul>
+			<li v-for="(item,idx) in roles" :key="item.id">{{ item.id }} - {{ item.name }}</li>
+		</ul>
+	</div>
+</body>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 	<script>
-	(() => {
-		fetch('https://ikala-test.hineomi.com/api/v1/role')
-		.then((response) => {
-			console.log(response)
-		})
-		.catch(e => console.error(e));
-	})();
+		const vm = new Vue({
+			el: '#app',
+			data:{
+				roles: []
+			},
+			mounted() {
+				(() => {
+					fetch('https://ikala-test.hineomi.com/api/v1/role')
+					.then((response) => {
+						return response.json();
+					})
+					.then((result) => {
+						this.roles = result;
+					})
+					.catch(e => console.error(e));
+				})();
+			},
+		});
+	
 	</script>
 </body>
 </html>
