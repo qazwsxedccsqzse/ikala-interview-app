@@ -24,6 +24,7 @@ const router = express.Router();
  */
 router.get('/', async (req, res) => {
 	// input validator here
+
 	// const roles = await RoleService.getAllRoles();
 	const roles = [{
 		"id": 1, "name": "Admin"
