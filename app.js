@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const cors = require('cors');
+const helmet = require('helmet');
+
 const WHITELIST = ['http://localhost:8887', 'http://localhost:3002', 'http://localhost:3000'];
 const corsOptions = {
   origin: function (origin, callback) {
@@ -49,6 +51,7 @@ const swaggerSpec = swaggerJSDoc(options);
 
 
 const app = express();
+app.use(helmet());
 app.use(cors(corsOptions));
 
 app.get('/swagger.json', function(req, res) {
